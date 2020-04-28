@@ -7,8 +7,8 @@ public class Main {
       System.out.println(compareValues(firstValue, secondValue));
       System.out.println("Sum = ".concat(getSum(firstValue, secondValue).toString()));
     }
-    catch(NumberFormatException ex) {
-      System.out.println("Values have not been parsed!");
+    catch(RuntimeException ex) {
+      System.out.println("Some values have been missed!");
     }
   }
   
