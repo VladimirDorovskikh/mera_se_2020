@@ -1,5 +1,4 @@
 /**
- *Задание 1:
  *Написать программу, в которой есть две переменные типа Integer со значениями. 
  *Значения можно указать в коде программы или ввести с клавиатуры или взять из аргументов.
  *Если первое число больше второго – написать на экран « Число %s больше %s”
@@ -13,19 +12,26 @@ public class Task
 {
     public static void main(String[] args){
 
+        //Ask user to enter number a
         Scanner in = new Scanner(System.in);
         System.out.print("Enter number a: ");
         int a = in.nextInt();
 //        int a = 5;
+        // Declare integer number b
         int b = 6;
+        // Calculate integer sum a and b
         int sum = a + b;
         if (a == b) {
+            //print for user if a = b
             System.out.println("Number " + a + " is the same as number " + b);
         }else if (a > b) {
+            //print for user if a > b
             System.out.println( "Number " + a + " is greater than number " + b);
         }else {
+            //print for user if a < b
             System.out.println( "Number " + a + " is less than number " + b);
         }
-        System.out.println("Sum " + sum);
+        //print for user sum a + b
+        System.out.println("Sum = " + sum);
     }
 }
