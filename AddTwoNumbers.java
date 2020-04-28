@@ -1,25 +1,25 @@
-package com.company;
+package com.company.AddTwoNumbers;
 
 import java.util.Scanner;
 
-public class Main {
+class AddTwoNumbers {
 
     public static void main(String[] args) {
         // Ввести два числа с клавиатуры
         Scanner scn = new Scanner(System.in);
         System.out.println("Введите первое число: ");
-        int num1 =scn.nextInt();
+        Integer num1 =scn.nextInt();
 
         System.out.println("Введите второе число: ");
-        int num2 =scn.nextInt();
+        Integer num2 =scn.nextInt();
 
         scn.close();
 
         // Сравнить 2 числа
-        if (num1 > num2) {
+        if (num1.compareTo(num2) > 0) {
             System.out.println("\"" + "Число " +num1 + " больше " + num2 + "\"");
         }
-        else if (num1 < num2) {
+        else if (num1.compareTo(num2) < 0) {
             System.out.println("\"" + "Число " +num1 + " меньше " + num2 + "\"");
         }
 
