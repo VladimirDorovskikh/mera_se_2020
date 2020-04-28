@@ -1,0 +1,31 @@
+/**
+ *Задание 1:
+ *Написать программу, в которой есть две переменные типа Integer со значениями. 
+ *Значения можно указать в коде программы или ввести с клавиатуры или взять из аргументов.
+ *Если первое число больше второго – написать на экран « Число %s больше %s”
+ *Если первое число меньше второго – написать на экран «Число %s меньше %s”
+ *В любом случае, вывести на экран сумму чисел. 
+ */
+
+import java.util.Scanner;
+
+public class Task
+{
+    public static void main(String[] args){
+
+        Scanner in = new Scanner(System.in);
+        System.out.print("Enter number a: ");
+        int a = in.nextInt();
+//        int a = 5;
+        int b = 6;
+        int sum = a + b;
+        if (a == b) {
+            System.out.println("Number " + a + " is the same as number " + b);
+        }else if (a > b) {
+            System.out.println( "Number " + a + " is greater than number " + b);
+        }else {
+            System.out.println( "Number " + a + " is less than number " + b);
+        }
+        System.out.println("Sum " + sum);
+    }
+}
