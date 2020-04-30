@@ -20,8 +20,10 @@ public class Main {
         Boolean b = true;
         Boolean fa = false;
 
+
+        System.out.println("Правка");
         b |= fa;
-        System.out.println(b);
+        System.out.println(fa);
 
     }
 
