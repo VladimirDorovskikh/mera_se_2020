@@ -138,11 +138,11 @@ class Utilities {
             int randValue = rand.nextInt();
             if (isPositive) {
                 if (randValue < 0) {
-                    randValue *= -1.;
+                    randValue *= -1;
                 }
             } else {
                 if (randValue > 0) {
-                    randValue *= -1.;
+                    randValue *= -1;
                 }
             }
             array[i] = randValue;
