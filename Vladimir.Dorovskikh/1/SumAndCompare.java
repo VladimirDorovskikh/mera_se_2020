@@ -1,11 +1,10 @@
 import java.util.Scanner;
 
-public class sumAndCompare
+public class SumAndCompare
 {
     private static Scanner scanner = new Scanner( System.in );
 
-    //Integer getInteger(String arg)
-    static Integer getInteger(String arg)
+    static int getInteger(String arg)
     {
         int num;
         do {
@@ -22,8 +21,6 @@ public class sumAndCompare
             }
             catch (NumberFormatException nfe) {
                 arg = null;
-                //System.out.println("Please provide integer argument next time.");
-                //System.exit(1);
             }
         } while (true);
 
@@ -32,15 +29,10 @@ public class sumAndCompare
 
     public static void main(String[] args)
     {
-        //System.out.println("Hello world!");
         System.out.println("Compares and sums two integer from the arguments or user input " + args.length);
-        //System.out.println("Number of arguments is " + args.length);
 
-        /*sumAndCompare s = new sumAndCompare();
-        Integer one = s.getInteger(args[0]);
-        Integer two = s.getInteger(args[1]);*/
-        Integer one = getInteger(args[0]);
-        Integer two = getInteger(args[1]);
+        int one = getInteger(args.length>0?args[0]:null);
+        int two = getInteger(args.length>1?args[1]:null);
 
         if (one > two)
         {
