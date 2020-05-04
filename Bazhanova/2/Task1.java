@@ -8,14 +8,14 @@ public class Task1{
  
        
     int N = 10;
-    int[] mass = new int[N];  
+    int[] array = new int[N];  
  
     Random rand = new Random();
     int min=60;
     int id_min = 0;
     int sum =0;
  
-    int[] array = new int[N];
+    
    
    //Заполнение массива случайными числами и их вывод 
    System.out.print("mass= ");
