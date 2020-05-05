@@ -1,0 +1,56 @@
+/* Задание 2. Случайности расходятся
+*- Создать массив на 5 элементов типа int и вывести на экран
+*- Разделить на два других - в первом массиве только четные числа, 
+* во втором - только нечетные. Оба массива вывести на экран.
+*- Найти среднее значение в каждом массиве и вывести их на экран
+*/
+
+import java.util.Random;
+import java.util.Arrays;
+
+public class Even {
+
+    public static void main(String[] args) {
+        int[] array = new int[5];   //create and declare array
+        int j = 0;                  //declare var for index of even array
+        float sum1 = 0;             //declare var for sum of even array elements
+        int[] even = new int[0];    //create and declare empty even array
+        int h = 0;                  //declare var for index of odd array
+        float sum2 = 0;             //declare var for sum of odd array elements
+        int[] odd = new int[0];     //create and declare empty odd array
+        //Create cycle to fill array with random digits
+        for (int i = 0; i < 5; i++) {
+            array[i] = new Random().nextInt(10);   //generate random digit for element
+            if (array[i] % 2 == 0) {               //Verify that element/2=integer without remainder
+                even = addE(j, even, array[i]);    //call addE method to add element to even array
+                j += 1;
+                sum1 += array[i];
+            }
+            else {
+                odd = addE(h, odd, array[i]);      //call addE method to add element to odd array
+                h += 1;
+                sum2 += array[i];
+            }
+        }
+
+        System.out.println(Arrays.toString(array)); //print origin array
+        System.out.println(Arrays.toString(even));  //print new array with even digits
+        System.out.println("Average for even array:" + sum1/even.length);       //print middle for even array
+        System.out.println(Arrays.toString(odd));   //print new array with odd digits
+        System.out.println("Average for odd array:" + sum2/odd.length);        //print middle for even array
+    }
+
+    public static int[] addE(int j, int arr[], int x)
+    //addE method to add new element to new array
+    {
+        int i;
+        int newarr[] = new int[j + 1];  // create a new array of size j+1
+        /* insert the elements from the old array into the new array
+        * insert all elements till j
+        * then insert x at j+1  */
+        for (i = 0; i < j; i++)
+            newarr[i] = arr[i];
+        newarr[j] = x;
+        return newarr;
+    }
+}
