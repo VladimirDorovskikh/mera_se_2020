@@ -40,7 +40,7 @@ class CompareTwoIntegers {
             // prevent values update in case of exception
             value_a = input.nextInt();
             value_b = input.nextInt();
-            valuesWereSet = false;
+            valuesWereSet = true;
         }
         catch (IllegalStateException ex) {
             System.out.println("Cannot read data from input.");
