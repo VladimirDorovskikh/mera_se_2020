@@ -1,0 +1,38 @@
+/* Задание 1. Случайности складываются
+*- Создать массив на 10 чисел типа int
+*- Заполнить массив случайными числами, используя класс Random и функцию nextInt()
+*- Вывести массив на экран одной строкой, разделив элементы пробелом
+*- Посчитать сумму всех элементов и вывести на экран
+*- Найти минимальный элемент и вывести на экран его индекс в массиве и значение
+*/
+
+
+import java.util.Random;
+import java.util.Arrays;
+
+public class Accidents
+{
+    public static void main(String[] args) {
+        int arraySize = 10;     //set array size
+        int[] array = new int[arraySize];   //declare and create array with 10 elements
+        int sum = 0;    //declare var for calculate sum of all elements
+        int min = 20;   //declare min var to find min element
+        int minEl = 0;  //declare minEl var for index of min element
+        //Create cycle to fill array with random digits
+        for (int i = 0; i < arraySize; i++) {
+            int array[] = new Random().nextInt(20);   //generate random digit for element
+            System.out.print(x+" ");    //print elements in line with " "
+            sum += x;   //calculate sum
+            //Compare each element and min var to find min element of array
+            if (x < min) {
+                min = x;
+                minEl = i;
+            }
+        }
+        System.out.println();
+        //Print array elements for user
+        System.out.println("Sum of array elements: "+sum);
+        //Print index and value of min element of array
+        System.out.println("Index of min element: "+minEl+". Value of min element: "+min);
+    }
+}
