@@ -4,14 +4,11 @@ public class Task1{
    
 
   public static void main(String []args){
-    
-    Integer a;
-    Integer b;
-    
+  
     Random rand = new Random();
         
-    a=rand.nextInt(100);
-    b=rand.nextInt(100);;
+    Integer a=rand.nextInt(100);
+    Integer b=rand.nextInt(100);
    
     if(a>b)
         System.out.println( "Число " + a + " больше " + b);
