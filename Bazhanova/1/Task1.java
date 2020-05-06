@@ -10,12 +10,12 @@ public class Task1{
     Integer a=rand.nextInt(100);
     Integer b=rand.nextInt(100);
    
-    if(a>b)
+    if(a>b) {
         System.out.println( "Число " + a + " больше " + b);
-        
-    else
+    }
+    else {
         System.out.println( "Число " + a + " меньше " + b);  
-        
+    }   
         
     System.out.println( "Сумма чисел равна " + (a + b)); 
    
