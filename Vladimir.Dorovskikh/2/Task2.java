@@ -65,10 +65,10 @@ public class Task2
         return minorElementIndex;
     }
 
-    public static int getAverage(int[] localArray)
+    public static double getAverage(int[] localArray)
     {
-        int result = 0;
-        for (int i : localArray)
+        double result = 0;
+        for (double i : localArray)
         {
             result += (i / localArray.length);
         }
