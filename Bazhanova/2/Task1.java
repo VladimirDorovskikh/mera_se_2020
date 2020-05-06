@@ -7,8 +7,8 @@ public class Task1{
   public static void main(String []args){
  
        
-    int N = 10;
-    int[] array = new int[N];  
+    int n = 10;
+    int[] array = new int[n];  
  
     Random rand = new Random();
     int min=60;
