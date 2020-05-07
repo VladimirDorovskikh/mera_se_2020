@@ -54,9 +54,11 @@ public class MainDivergence
         }
         System.out.println(" ");
 
-        // Output arrays' average
-        System.out.println("Even array average value: " + (float)evenSum/evenArray.length);
-        System.out.println("Odd array average value:  " + (float)oddSum/oddArray.length);
+        // Calculate and output arrays' average
+        float avgEven = evenArray.length !=0 ? (float)evenSum/evenArray.length : 0;
+        float avgOdd = oddArray.length !=0 ? (float)oddSum/oddArray.length : 0;
+        System.out.println("Even array average value: " + avgEven);
+        System.out.println("Odd array average value:  " + avgOdd);
     }
 
 }

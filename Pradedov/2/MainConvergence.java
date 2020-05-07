@@ -16,7 +16,7 @@ public class MainConvergence
     public static void main(String[] args) {
         int[] array = new int[ARRAY_SIZE];
         long sum = 0L;
-        int min = 0;
+        int min = array[0];
         int minIdx = 0;
         Random random = new Random();
 

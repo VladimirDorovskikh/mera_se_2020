@@ -17,7 +17,6 @@ public class MainZip
     public static void main(String[] args) {
         int[] positiveArr = new int[ARRAY_SIZE];
         int[] negativeArr = new int[ARRAY_SIZE];
-        boolean arraysFilledIn = false;
         int positiveIdx = 0;
         int negativeIdx = 0;
         Random random = new Random();
