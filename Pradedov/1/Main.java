@@ -8,24 +8,24 @@
 
 import java.util.Scanner;
 
-class CompareTwoIntegers {
+class compareTwoIntegers {
     private static final int DEFAULT_VALUE_A = 5;
     private static final int DEFAULT_VALUE_B = 10;
 
-    private int value_a = DEFAULT_VALUE_A;
-    private int value_b = DEFAULT_VALUE_B;
+    private int valueA = DEFAULT_VALUE_A;
+    private int valueB = DEFAULT_VALUE_B;
     private String [] args;
     private boolean valuesWereSet = false;
 
-    public CompareTwoIntegers(String [] args) {
+    public compareTwoIntegers(String [] args) {
         this.args = args;
     }
 
-    private void ReadValuesFromArgs() {
+    private void readValuesFromArgs() {
         try {
-            value_a = Integer.parseInt(args[0]);
-            value_b = Integer.parseInt(args[1]);
-            System.out.println("Values provided via args: value_a = " + value_a + " value_b = " + value_b);
+            valueA = Integer.parseInt(args[0]);
+            valueB = Integer.parseInt(args[1]);
+            System.out.println("Values provided via args: value_a = " + valueA + " value_b = " + valueB);
             valuesWereSet = true;
         }
         catch (NumberFormatException ex) {
@@ -33,13 +33,13 @@ class CompareTwoIntegers {
         }
     }
 
-    private void ReadValuesFromInput() {
+    private void readValuesFromInput() {
         Scanner input = new Scanner(System.in);
         System.out.println("Type two space-separated integer numbers and press enter");
         try {
             // prevent values update in case of exception
-            value_a = input.nextInt();
-            value_b = input.nextInt();
+            valueA = input.nextInt();
+            valueB = input.nextInt();
             valuesWereSet = true;
         }
         catch (IllegalStateException ex) {
@@ -50,36 +50,36 @@ class CompareTwoIntegers {
         }
     }
 
-    public void CompareAndSum() {
+    public void compareAndSum() {
         if (null != args && 2 == args.length) {
-            ReadValuesFromArgs();
+            readValuesFromArgs();
         }
 
         if (!valuesWereSet) {
-            ReadValuesFromInput();
+            readValuesFromInput();
         }
 
         if (!valuesWereSet) {
             System.out.println("Neither arguments nor prompt values were correct. "
-                    + "Use default values: value_a = " + value_a + ", value_b = " + value_b);
+                    + "Use default values: value_a = " + valueA + ", value_b = " + valueB);
         }
 
-        if (value_a > value_b) {
-            System.out.println("\nNumber " + value_a + " is greater than " + value_b);
+        if (valueA > valueB) {
+            System.out.println("\nNumber " + valueA + " is greater than " + valueB);
         }
-        else if (value_b > value_a) {
-            System.out.println("\nNumber " + value_b + " is greater than " + value_a);
+        else if (valueB > valueA) {
+            System.out.println("\nNumber " + valueB + " is greater than " + valueA);
         }
         else {
-            System.out.println("\nNumbers are equal: " + value_a);
+            System.out.println("\nNumbers are equal: " + valueA);
         }
-        System.out.println("Sum is: " + (value_a + value_b));
+        System.out.println("Sum is: " + (valueA + valueB));
     }
 }
 
 public class Main {
     public static void main(String[] args) {
-        CompareTwoIntegers compare = new CompareTwoIntegers(args);
-        compare.CompareAndSum();
+        compareTwoIntegers compare = new compareTwoIntegers(args);
+        compare.compareAndSum();
     }
 }
