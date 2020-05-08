@@ -21,8 +21,7 @@ public class Person {
 
     // Возвращает человека в формате "Фамилия, Имя"
     public String toString() {
-        String string = getLastName() + ", " + getFirstName();
-        return string;
+        return getLastName() + ", " + getFirstName();
     }
 
     public static void main(String[] args) {
