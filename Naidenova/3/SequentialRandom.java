@@ -2,11 +2,11 @@ import java.util.Random;
 
 public class SequentialRandom {
     private int readOnly;           //private readOnly class field
-    static int increase = new Random().nextInt(10000);
+    static int randomDigit = new Random().nextInt(10000);
 
     public SequentialRandom() {     //Constructor with readOnly arg
-        this.readOnly = increase;
-        increase++;                     //increase + 1
+        this.readOnly = randomDigit;
+        randomDigit++;                     //randomDigit + 1
     }
 
     int getReadOnly() {             //get method to return readOnly field
@@ -18,7 +18,7 @@ public class SequentialRandom {
     }
 
     public static void resetRandom() {
-        increase = new Random().nextInt(10000);
+        randomDigit = new Random().nextInt(10000);
     }
 
 
