@@ -1,0 +1,51 @@
+/*Задание 3. Противоположности притигиваются
+*  - Создайте два массива на 7 элементов.
+*  в первом массиве должно оказаться ровно 7 положительных чисел,
+* во втором - ровно 7 отрицательных.
+*  Подсказка: используйте цикл while во время генерации случайных чисел и 
+* проверку на заполненность массива, прежде, чем записывать туда элемент.
+*  - Выведите оба массива на экран
+*  - Создайте новый массив на 7 элементов.
+*  Значением на каждой позиции является суммой значений на позициях 
+* с тем же индексом из положительного и отрицательного массива.
+*/
+
+
+import java.util.Random;
+import java.util.Arrays;
+
+public class Twoarrays {
+    public static void main(String[] args) {
+        int[] array1 = new int[7];      //create and declare array1 for positive numbers
+        int x, i = 0, j = 0;            //declare var x, i, j
+        int[] array2 = new int[7];      //create and declare array2 for negative numbers
+        while (i < 7) {                 //While the arrays sizes are not exceeded
+            //generate random digit, if x = 0 then generate again
+            do {
+                x = new Random().nextInt(21) - 10;   //generate random digit from -10 to 10 for x
+            } while (x == 0);
+            if (x > 0) {                //Verify that x > 0
+                array1[i] = x;          //fill i element for array1
+                i++;
+            }
+        }
+        while (j < 7) {
+            //generate random digit, if x = 0 then generate again
+            do {
+                x = new Random().nextInt(21) - 10;   //generate random digit from -10 to 10 for x
+            } while (x == 0);
+            if (x < 0) {                //Verify that x < 0
+                array2[j] = x;          //fill j element for array2
+                j++;
+            }
+        }
+        System.out.println(Arrays.toString(array1)); //print array1 with positive numbers
+        System.out.println(Arrays.toString(array2)); //print array2 with negative numbers
+        int[] arraysum = new int[7];    //create and declare arraysum
+        for (int h = 0 ; h < 7; h++){
+            arraysum[h] = array1[h] + array2[h];    //each element = sum for each elements of 2 origin array according to index
+        }
+        System.out.println(Arrays.toString(arraysum)); //print array with sum for each element of 2 origin arrays
+    }
+
+}
