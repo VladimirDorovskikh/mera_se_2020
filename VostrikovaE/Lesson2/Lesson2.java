@@ -7,7 +7,7 @@ public class Lesson2 {
 
     static int[]  getRandomArray(int size){
         int[] Array = new int[size];
-        Random rnd=new Random();
+        Random  rnd=new Random();
         for (int i=0; i<Array.length; i++) {
             Array[i]= rnd.nextInt();
         }
@@ -17,15 +17,15 @@ public class Lesson2 {
 
     public static void main(String[] args) {
         System.out.println("exercise 1");
-        sum_of_random();
+        sumOfRandom();
         System.out.println("exercise 2");
-        odd_and_even();
+        calculateOddAndEven();
         System.out.println("exercise 3");
         third();
 
     }
 
-    static void sum_of_random() {
+    static void sumOfRandom() {
         int[] Array = getRandomArray(10);
         int sum = 0;
         String resultString="";
@@ -47,66 +47,68 @@ public class Lesson2 {
         System.out.println("minimum element in array is " + min_value + " it's position in array is " + (min_index+1));
     }
 
-    static  void odd_and_even() {
-        int[] Array = getRandomArray(5);
-        System.out.println("random array: " + Arrays.toString(Array));
-        int[] Array_odd_tmp = new int[5];
-        int[] Array_even_tmp = new int[5];
-        int index_odd = 0;
-        int index_even = 0;
-        int sum_even = 0;
-        int sum_odd = 0;
-        for (int i=0; i<Array.length; i++) {
-            if (Array[i] % 2 == 0) {
-                Array_even_tmp[index_even] = Array[i];
-                index_even++;
-                sum_even += Array[i];
+    static  void calculateOddAndEven() {
+        int[] randomArray = getRandomArray(5);
+        System.out.println("random array: " + Arrays.toString(randomArray));
+        int[] arrayOddTmp = new int[5];
+        int[] arrayEvenTmp = new int[5];
+        int indexOdd = 0;
+        int indexEven = 0;
+        double sumEven = 0.0;
+        double sumOdd = 0.0;
+        for (int i=0; i<randomArray.length; i++) {
+            if (randomArray[i] % 2 == 0) {
+                arrayEvenTmp[indexEven] = randomArray[i];
+                indexEven++;
+                sumEven += randomArray[i];
             } else {
-                Array_odd_tmp[index_odd] = Array[i];
-                index_odd++;
-                sum_odd += Array[i];
+                arrayOddTmp[indexOdd] = randomArray[i];
+                indexOdd++;
+                sumOdd += randomArray[i];
             }
         }
-        int[] Array_even=Arrays.copyOf(Array_even_tmp, index_even);
-        int[] Array_odd=Arrays.copyOf(Array_odd_tmp, index_odd);
-        System.out.println("array of even numbers :" + Arrays.toString(Array_even));
-        System.out.println("array of odd numbers :" + Arrays.toString(Array_odd));
-        if (index_even != 0) {
-            System.out.println("average value for array of even numbers is " + sum_even / index_even);
+        int[] arrayEven=Arrays.copyOf(arrayEvenTmp, indexEven);
+        int[] arrayOdd=Arrays.copyOf(arrayOddTmp, indexOdd);
+        System.out.println("array of even numbers :" + Arrays.toString(arrayEven));
+        System.out.println("array of odd numbers :" + Arrays.toString(arrayOdd));
+        if (indexEven != 0) {
+            System.out.println("average value for array of even numbers is " + sumEven / indexEven);
         } else {
             System.out.println("no even numbers");
         }
-        if (index_odd != 0) {
-            System.out.println("average value for array of odd numbers is " + sum_odd/index_odd);
+        if (indexOdd != 0) {
+            System.out.println("average value for array of odd numbers is " + sumOdd/indexOdd);
         } else {
             System.out.println("no odd numbers");
         }
     }
 
     static  void third(){
-        final int array_length=7;
-        int[] Array_positive=new int[array_length];
-        int[] Array_negative = new int[array_length];
-        int index_positive = 0;
-        int index_negative = 0;
+        final int arrayLength=7;
+        int[] ArrayPositive=new int[arrayLength];
+        int[] ArrayNegative = new int[arrayLength];
+        int indexPositive = 0;
+        int indexNegative = 0;
         Random rnd = new Random();
-        int tmp_random;
-        while((index_positive < array_length) || (index_negative < array_length)) {
-            tmp_random = rnd.nextInt();
-            if (tmp_random > 0) {
-                Array_positive[index_positive] = tmp_random;
-                index_positive++;
-            } else if (tmp_random < 0) {
-                Array_negative[index_negative] = tmp_random;
-                index_negative++;
+        int tmpRandom;
+        while((indexPositive < arrayLength) || (indexNegative < arrayLength)) {
+            tmpRandom = rnd.nextInt();
+            if ((tmpRandom > 0) & (indexPositive < 7)) {
+                ArrayPositive[indexPositive] = tmpRandom;
+                indexPositive++;
+            } else if ((tmpRandom < 0) & (indexNegative < 7)) {
+                ArrayNegative[indexNegative] = tmpRandom;
+                indexNegative++;
             }
         }
-        System.out.println("array of positive random numbers :"+Arrays.toString(Array_positive));
-        System.out.println("array of negative random numbers :"+Arrays.toString(Array_negative));
-        int[] Array_sum=new int[array_length];
-        for(int i=0;i<array_length; i++){
-            Array_sum[i]=Array_positive[i]+Array_negative[i];
+        System.out.println("array of positive random numbers :"+Arrays.toString(ArrayPositive));
+        System.out.println("array of negative random numbers :"+Arrays.toString(ArrayNegative));
+        int[] Array_sum=new int[arrayLength];
+        for(int i=0;i<arrayLength; i++){
+            Array_sum[i]=ArrayPositive[i]+ArrayNegative[i];
         }
         System.out.println("array of sum :"+Arrays.toString(Array_sum));
     }
+
 }
+
