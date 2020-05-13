@@ -29,11 +29,7 @@ public class Person {
         Person[] crowd = new Person[50];
 
         for (int i = 0; i < crowd.length; i++) {
-            selector = random.nextInt(5);
-            selectedName = names[selector];
-            selector = random.nextInt(6);
-            selectedLastName = lastNames[selector];
-            crowd[i] = new Person(selectedName, selectedLastName);
+            crowd[i] = new Person(names[random.nextInt(names.length)], lastNames[random.nextInt(lastNames.length)]);
             System.out.println("Person #" + (i + 1) + " is " + crowd[i].toString());
         }
     }
