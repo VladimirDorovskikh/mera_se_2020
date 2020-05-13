@@ -1,12 +1,23 @@
-package com.mera.training.task04;
-
-import java.util.Random;
-
 public class Task0401 {
     private static final String[] fruitNames = {"Apple", "Orange", "Pineapple"};
 
-    private static int getRandomFruit() {
-        return new Random().nextInt(fruitNames.length);
+    private static Fruit getRandomFruit() {
+        Fruit fruit;
+        switch (new Random().nextInt(fruitNames.length))
+        {
+            case 0:
+                fruit = new Apple();
+                break;
+            case 1:
+                fruit = new  Orange();
+                break;
+            case 2:
+                fruit = new Pineapple();
+                break;
+            default:
+                fruit = new Orange();
+        }
+        return fruit;
     }
 
      public static void main(String[] args) {
@@ -30,6 +41,6 @@ public class Task0401 {
             }
             System.out.println(fruit[i].toString());
          }
-         System.out.println("Random fruit: " + fruit[getRandomFruit()].toString());
+         System.out.println("Random fruit: " + getRandomFruit());
     }
 }
