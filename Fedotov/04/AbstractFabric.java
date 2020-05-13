@@ -1,5 +1,5 @@
 package com.mera.training.task04;
 
 public abstract class AbstractFabric {
-    public abstract String makeFruit();
+    public abstract Fruit makeFruit();
 }
