@@ -7,7 +7,7 @@ public class Pineapple extends Fruit {
         super();
     }
 
-    private int getTailHeight() {
+    public int getTailHeight() {
         return this.tailHeight;
     }
 
