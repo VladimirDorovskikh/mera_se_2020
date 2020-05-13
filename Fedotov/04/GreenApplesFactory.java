@@ -1,9 +1,13 @@
 package com.mera.training.task04;
 
 public class GreenApplesFactory extends AbstractFabric {
-    private final String color = "Green";
+    public Fruit makeFruit() {
 
-    public String makeFruit() {
-        return "Apple" + ", color: " + color;
+        Apple fruit;
+        do {
+            fruit = new Apple();
+        }
+        while (fruit.getColor().equals("Green"));
+        return fruit;
     }
 }
