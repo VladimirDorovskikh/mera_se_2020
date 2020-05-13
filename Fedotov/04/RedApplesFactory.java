@@ -3,9 +3,13 @@ package com.mera.training.task04;
 import java.util.Random;
 
 public class RedApplesFactory extends AbstractFabric {
-    private final String color = "Red";
+    public Fruit makeFruit() {
 
-    public String makeFruit() {
-        return "Apple" + ", color: " + color;
+        Apple fruit;
+        do {
+            fruit = new Apple();
+        }
+        while (fruit.getColor().equals("Red"));
+        return fruit;
     }
 }
