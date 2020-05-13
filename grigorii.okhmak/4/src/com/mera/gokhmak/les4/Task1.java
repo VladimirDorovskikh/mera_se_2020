@@ -1,4 +1,4 @@
-package com.mera.gokhmak;
+package com.mera.gokhmak.les4;
 
 /*
    Заполнить массив 4 случайными фруктами

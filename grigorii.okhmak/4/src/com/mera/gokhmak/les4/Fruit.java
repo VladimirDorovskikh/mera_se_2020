@@ -1,4 +1,4 @@
-package com.mera.gokhmak;
+package com.mera.gokhmak.les4;
 
 public class Fruit {
     static final String[] COLORS = {"yellow","green","red"};

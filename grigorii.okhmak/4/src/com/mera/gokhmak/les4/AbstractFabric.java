@@ -1,4 +1,4 @@
-package com.mera.gokhmak;
+package com.mera.gokhmak.les4;
 
 public abstract class AbstractFabric {
     static final AbstractFabric[] FABRICS = {new RedApplesFactory(),
