@@ -7,7 +7,7 @@ public class Orange extends Fruit {
         super();
     }
 
-    private int getSkinThickness() {
+    public int getSkinThickness() {
         return this.skinThickness;
     }
 
