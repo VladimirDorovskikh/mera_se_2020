@@ -1,9 +1,13 @@
 package com.mera.training.task04;
 
 public class LongPinepplesFactory extends AbstractFabric {
-    private final int tailLength = 11 + (int) (Math.random() * ((Integer.MAX_VALUE - 11) + 1)); // From 11
+    public Fruit makeFruit() {
 
-    public String makeFruit() {
-        return "PineApple" + ", tailLength: " + tailLength;
+        Pineapple fruit;
+        do {
+            fruit = new Pineapple();
+        }
+        while (fruit.getTailHeight() < 11);
+        return fruit;
     }
 }
