@@ -1,3 +1,7 @@
+package com.mera.training.task04;
+
+import java.util.Random;
+
 public class Task0401 {
     private static final String[] fruitNames = {"Apple", "Orange", "Pineapple"};
 
