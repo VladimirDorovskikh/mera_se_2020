@@ -1,6 +1,6 @@
 import java.util.Random;
 
-class ex1 {
+class Ex1 {
     public static void main(String[] args) {
         Integer[] nums = new Integer[10];
         Integer min, max, summ=0;

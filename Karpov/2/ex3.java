@@ -1,22 +1,26 @@
 import java.util.Random;
 
-class ex3 {
+class Ex3 {
     private static final int ARR_SIZE = 7;
 
     public static void main(String[] args) {
-        Integer[] nums1 = new Integer[ARR_SIZE];
-        Integer[] nums2 = new Integer[ARR_SIZE];
+        Integer[] positive = new Integer[ARR_SIZE];
+        Integer[] negative = new Integer[ARR_SIZE];
         Integer[] summ = new Integer[ARR_SIZE];
         Random filler = new Random();
         for (int i=0; i<7; i++ ) {
-            nums1[i]=filler.nextInt(20)+1;
-            nums2[i]=-(filler.nextInt(20)+1);
-            summ[i]=nums1[i]+nums2[i];
+            do {
+                positive[i]=filler.nextInt();
+            } while (positive[i]<=0);
+            do {
+                negative[i]=filler.nextInt();
+            } while (negative[i]>=0);
+            summ[i]=positive[i]+negative[i];
         }
-        System.out.print("Array 1:");
-        arrayPrinter(nums1);
-        System.out.print("Array 2:");
-        arrayPrinter(nums2);
+        System.out.print("Positive:");
+        arrayPrinter(positive);
+        System.out.print("Negative:");
+        arrayPrinter(negative);
         System.out.print("Summ array:");
         arrayPrinter(summ);
     }

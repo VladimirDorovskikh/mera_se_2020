@@ -2,7 +2,7 @@ import java.util.Random;
 
 import static java.lang.System.out;
 
-public class ex1 {
+public class Ex1 {
 
     public static void main(String[] args) {
         int number[] = new int[2];
