@@ -3,7 +3,7 @@ package com.katepopkova;
 import java.util.Random;
 
 public class Orange extends Fruit {
-    private final int SKIN_THICKNESS_BOUND = 21;
+    private final static int SKIN_THICKNESS_BOUND = 21;
 
     private int skinThickness;
 

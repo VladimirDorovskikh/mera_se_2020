@@ -3,8 +3,8 @@ package com.katepopkova;
 import java.util.Random;
 
 public class Pineapple extends Fruit {
-    private final int MIN_TRAIL_HEIGHT = 5;
-    private final int MAX_TRAIL_HEIGHT = 20;
+    private final static int MIN_TRAIL_HEIGHT = 5;
+    private final static int MAX_TRAIL_HEIGHT = 20;
 
     private int trailHeight;
 

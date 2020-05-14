@@ -3,7 +3,7 @@ package com.katepopkova;
 import java.util.Random;
 
 public class LongPinepplesFactory extends AbstractFabric {
-    private final int MIN_TAIL_HEIGHT_BOUND = 10;
+    private final static int MIN_TAIL_HEIGHT_BOUND = 10;
 
     @Override
     public Fruit makeFruit() {
