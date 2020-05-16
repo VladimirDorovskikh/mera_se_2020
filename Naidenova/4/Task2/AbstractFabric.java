@@ -2,10 +2,7 @@ import java.util.Random;
 
 public abstract class AbstractFabric {
 
-    public Fruit makeFruit(){
-        Fruit fruit = new Fruit(100);
-        return fruit;
-    }
+    public abstract Fruit makeFruit();
 }
 
 class ThinOrangeFactory extends AbstractFabric {
