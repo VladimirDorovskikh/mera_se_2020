@@ -25,13 +25,13 @@ public class Person {
         if (favoriteSeason == "Winter"){
             favoriteSeason = Seasons.WINTER.toString();
         }
-        if (favoriteSeason == "Spring"){
+        else if (favoriteSeason == "Spring"){
             favoriteSeason = Seasons.SPRING.toString();
         }
-        if (favoriteSeason == "Summer"){
+        else if (favoriteSeason == "Summer"){
             favoriteSeason = Seasons.SUMMER.toString();
         }
-        if (favoriteSeason == "Autumn"){
+        else {
             favoriteSeason = Seasons.AUTUMN.toString();
         }
         return this.name + " like "+ favoriteSeason;
