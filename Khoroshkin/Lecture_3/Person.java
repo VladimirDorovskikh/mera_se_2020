@@ -7,7 +7,6 @@ public class Person {
 		
 
 	public Person(String firstName, String lastName) {
-		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 	}
@@ -33,13 +32,11 @@ public class Person {
 		Person [] randName = new Person[50];
 		
 		for (int i = 0; i < 50; i++) {
-			String x = firstName [rand.nextInt(firstName.length)];
-			String z = lastName [rand.nextInt(lastName.length)];
-			randName[i] = new Person(x, z);
+			String first = firstName [rand.nextInt(firstName.length)];
+			String last = lastName [rand.nextInt(lastName.length)];
+			randName[i] = new Person(first, last);
 			System.out.println (randName[i].toString());
 		}
-		
-
 	}
 
 }
