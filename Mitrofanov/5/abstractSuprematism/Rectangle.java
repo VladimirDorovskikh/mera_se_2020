@@ -6,11 +6,11 @@ public class Rectangle extends Figure {
 
     public Rectangle(int x, int y, int width, int height) throws IllegalArgumentException {
         super(x, y);
-        if (width < 0 && height < 0) {
-            throw new IllegalArgumentException("Width or height cannot be negative");
+        if (width < 0 || height < 0) {
+            throw new IllegalArgumentException("Width and height cannot be negative");
         }
-        if (width > 20 && height > 20) {
-            throw new IllegalArgumentException("Width or height cannot be grater than 20");
+        if (width > 20 || height > 20) {
+            throw new IllegalArgumentException("Width and height cannot be grater than 20");
         }
         this.width = width;
         this.height = height;

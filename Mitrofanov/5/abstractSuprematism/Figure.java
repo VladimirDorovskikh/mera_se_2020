@@ -35,10 +35,10 @@ public abstract class Figure {
 
     public Quadrant getQuadrant() {
         Quadrant result;
-        if (this.getX() < 0) {
-            result = (this.getY() < 0) ? Quadrant.III : Quadrant.II;
+        if (this.x < 0) {
+            result = (this.y < 0) ? Quadrant.III : Quadrant.II;
         } else {
-            result = (this.getY() < 0) ? Quadrant.IV : Quadrant.I;
+            result = (this.y < 0) ? Quadrant.IV : Quadrant.I;
         }
         return result;
     }
