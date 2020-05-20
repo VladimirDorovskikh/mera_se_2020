@@ -1,4 +1,4 @@
-package iljicheva.lesson3;
+package iljicheva.lesson3.task1;
 
 import java.util.Random;
 
