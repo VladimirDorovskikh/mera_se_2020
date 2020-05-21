@@ -2,10 +2,21 @@ import java.util.Random;
 
 class Ex2 {
     public static void main(String[] args) {
+
+        /* to check option from comment */
+        SequentialRandom a = new SequentialRandom();
+        SequentialRandom b = new SequentialRandom();
+        SequentialRandom c = new SequentialRandom();
+
+        System.out.println(a.getValue()); // random value
+        System.out.println(b.getValue()); // random value+1
+        System.out.println(c.getValue()); // random value+2
+
         demonstrateRandom(3);
         System.out.println("Reset...");
         SequentialRandom.resetRandom();
         demonstrateRandom(3);
+
 
     }
 
@@ -22,23 +33,26 @@ class Ex2 {
 
 class SequentialRandom{
     Random filler = new Random();
-    static private int value;
-    static private boolean reset=true;
+    private static int previousValue;
+    private int value;
+    private static boolean reset=true;
 
     SequentialRandom(){
         if (reset==true){
             value=filler.nextInt();
+            previousValue=value;
             reset=false;
         }
         else {
-            value++;
+            previousValue++;
+            value=previousValue;
         }
     }
     public static void resetRandom(){
         reset=true;
     }
 
-    public static int getValue() {
+    public int getValue() {
         return value;
     }
 }
