@@ -6,6 +6,6 @@ public class Cat extends PetAnimal {
 
     @Override
     public String getFavouriteMeal() {
-        return "Fish";
+        return Meal.CAT_MEAL.getValue();
     }
 }

@@ -6,6 +6,6 @@ public class Fox extends WildAnimal {
 
     @Override
     public String getFavouriteMeal() {
-        return "Cheese";
+        return Meal.FOX_MEAL.getValue();
     }
 }
