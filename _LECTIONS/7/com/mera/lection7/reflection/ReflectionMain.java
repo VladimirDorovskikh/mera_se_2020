@@ -3,7 +3,7 @@ package com.mera.lection7.reflection;
 public class ReflectionMain {
     public static void main(String[] args) {
 
-        final Class<Person> personClass = Person.class;
+        final Class personClass = Person.class;
         try {
             final Class<?> anotherPersonClass = Class.forName("com.mera.lection7.reflection.Person");
         } catch (ClassNotFoundException e) {
@@ -16,7 +16,11 @@ public class ReflectionMain {
         if (p instanceof Person) {
             System.out.println("Это человек!");
         }
-        final Class<? extends Person> classFromObject = p.getClass();
+        final Class classFromObject = new Person().getClass();
+
+        if (personClass == classFromObject) {
+            System.out.println("Классы одинаковые!");
+        }
 
 
 

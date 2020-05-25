@@ -19,4 +19,14 @@ public class Person {
     public void setFirstName(String firstName) { this.firstName = firstName; }
     public int getAge() { return age; }
     public void setAge(int age) { this.age = age; }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Person{");
+        sb.append("lastName='").append(lastName).append('\'');
+        sb.append(", firstName='").append(firstName).append('\'');
+        sb.append(", age=").append(age);
+        sb.append('}');
+        return sb.toString();
+    }
 }

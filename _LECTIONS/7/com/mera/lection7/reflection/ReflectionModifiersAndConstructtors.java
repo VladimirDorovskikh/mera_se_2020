@@ -7,7 +7,7 @@ import java.lang.reflect.Modifier;
 public class ReflectionModifiersAndConstructtors {
 
     public static void main(String[] args) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
-
+/*
         Class<Person> personClazz = Person.class;
 
         int modifiers = personClazz.getModifiers();
@@ -21,7 +21,8 @@ public class ReflectionModifiersAndConstructtors {
 
         System.out.println(isPublic);
         System.out.println(isAbstract);
-        System.out.println(isInterface);
+        System.out.println(isInterface);*/
+
 
 
         Class<? super Person> superclass = Person.class.getSuperclass();
@@ -43,6 +44,11 @@ public class ReflectionModifiersAndConstructtors {
 
         final PersonWithMiddleName personWithMiddleName = PersonWithMiddleName.class.newInstance();
         final Object o = constructor.newInstance("Пупкин","Василий","Олегович");
+        if (o instanceof PersonWithMiddleName) {
+            final PersonWithMiddleName personCasted = (PersonWithMiddleName) o;
+            System.out.println(personCasted.getMiddleName());
+        }
+
 
 
     }
