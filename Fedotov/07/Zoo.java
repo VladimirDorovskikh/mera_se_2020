@@ -4,13 +4,10 @@ import java.util.*;
 
 public class Zoo {
 
-    private Set<PetAnimal> petSet;
-    private Set<WildAnimal> wildSet;
+    private Set<PetAnimal> petSet = new HashSet<>();
+    private Set<WildAnimal> wildSet = new HashSet<>();
 
     public Zoo() {
-        this.petSet = new HashSet<PetAnimal>();
-        this.wildSet = new HashSet<WildAnimal>();
-
         fillCollectionWithPetAnimals(petSet);
         fillCollectionWithWildAnimals(wildSet);
     }
@@ -23,14 +20,25 @@ public class Zoo {
         final int maxPet = 5;
 
         Random random = new Random();
-        int petCounter = random.nextInt(minPet + ((maxPet - minPet) + 1));
+        int petCounter = random.nextInt(minPet + (int) (Math.random() * ((maxPet - minPet) + 1)));
 
         for (int i = 0; i < petCounter; i++) {
+            int randPet = new Random().nextInt(petCounter);
             if  (random.nextBoolean()) {
-                petSet.add(new Cat(catNames[random.nextInt(catNames.length)]));
+                do {
+                    if (petSet.isEmpty() || !petSet.toString().contains(catNames[randPet])) {
+                        petSet.add(new Cat(catNames[randPet]));
+                        break;
+                    }
+                } while (petSet.size() < randPet);
             }
             else {
-                petSet.add(new Dog(dogNames[random.nextInt(dogNames.length)]));
+                do {
+                    if (petSet.isEmpty() || !petSet.toString().contains(dogNames[randPet])) {
+                        petSet.add(new Dog(dogNames[randPet]));
+                        break;
+                    }
+                } while (petSet.size() < randPet);
             }
         }
     }
@@ -43,24 +51,49 @@ public class Zoo {
         final int maxWild = 10;
 
         Random random = new Random();
-        int wildCounter = random.nextInt(minWild + ((maxWild - minWild) + 1));
+        int wildCounter = random.nextInt(minWild + (int) (Math.random() * ((maxWild - minWild) + 1)));
 
         for (int i = 0; i < wildCounter; i++) {
+            int randWild = new Random().nextInt(wildCounter);
             if  (random.nextBoolean()) {
-                wildSet.add(new Wolf(wolfNames[random.nextInt(wolfNames.length)]));
+                do {
+                    if (wildSet.isEmpty() || !wildSet.toString().contains(wolfNames[randWild])) {
+                        wildSet.add(new Wolf(wolfNames[randWild]));
+                        break;
+                    }
+                } while (wildSet.size() < randWild);
             }
             else {
-                wildSet.add(new Fox(foxNames[random.nextInt(foxNames.length)]));
+                do {
+                    if (wildSet.isEmpty() || !wildSet.toString().contains(foxNames[randWild])) {
+                        wildSet.add(new Fox(foxNames[randWild]));
+                        break;
+                    }
+                } while (wildSet.size() < randWild);
             }
         }
     }
 
     private void printAnimalsFromCollection(Set<? extends Animal> animalSet) {
-        System.out.println("\n" + Arrays.toString(animalSet.toArray()));
+        System.out.println("\n" + animalSet.toString());
     }
 
     public void printAllAnimals() {
         printAnimalsFromCollection(petSet);
         printAnimalsFromCollection(wildSet);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Zoo zoo = (Zoo) o;
+        return Objects.equals(petSet, zoo.petSet) &&
+                Objects.equals(wildSet, zoo.wildSet);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(petSet, wildSet);
     }
 }
