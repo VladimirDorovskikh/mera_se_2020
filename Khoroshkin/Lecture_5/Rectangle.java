@@ -7,7 +7,6 @@ public class Rectangle extends Figure{
 	double height;
 
 	public Rectangle() {
-		super();
 		height = new Random().nextInt(19)+1;
 		width = new Random().nextInt(19)+1;
 	}
