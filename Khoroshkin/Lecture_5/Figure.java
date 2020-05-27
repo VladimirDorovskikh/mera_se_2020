@@ -11,9 +11,10 @@ public abstract class Figure {
 		this.x=0;
 		this.y=0;
 	}
+	
 	Figure [] point;
-	protected int x = new Random().nextInt();
-	protected int y = new Random().nextInt();
+	protected int x;
+	protected int y;
 	
 	enum Quadrant{I, II, III, IV, coordinate_intersection}
 

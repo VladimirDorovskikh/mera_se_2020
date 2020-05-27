@@ -7,14 +7,13 @@ public class Circle extends Figure{
 	double radius;
 
 	public Circle() {
-		super();
 		radius = new Random().nextInt(9)+1;
 	}
 
 
 	@Override
 	public double square() {
-		return 3.14*radius;
+		return 3.14*radius*radius;
 	}
 
 	public String toString(){
