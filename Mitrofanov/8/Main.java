@@ -7,6 +7,7 @@ public class Main {
         List<Person> persons = new ArrayList<>();
         persons.add(new Person("Vasya", "Petrov", 42, "ABCDE"));
         persons.add(new Person("Petya", "Vasechkin", 18, "ABCDE"));
+        persons.add(new Person("Ivam", "Ivanovich", 30, "ABCDE"));
         String serialPerson = JsonSerialise.serialise(persons);
         System.out.println(JsonDeserialise.deserialise(serialPerson, Person.class));
     }
