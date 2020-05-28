@@ -1,16 +1,22 @@
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class JsonDeserialise {
-    public static <T> T deserialise(String json, Class<T> clazz) throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
+    public static <T> List<T> deserialise(String json, Class<T> clazz) throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
         Object object = clazz.getDeclaredConstructor().newInstance();
+        List<T> resultList = new ArrayList<>();
         System.out.println(json);
-        String[] splitStrings = json.split(";");
+        String[] splitStrings = json.split("\n");
+        List<String> finalStrings = new ArrayList<>();
         for (String uniqueLine : splitStrings) {
+            uniqueLine = uniqueLine.replace("\"", "");
+            uniqueLine = uniqueLine.replace(";", "");
+            finalStrings.add(uniqueLine);
+        }
+        System.out.println(finalStrings);
+        for (String uniqueLine : finalStrings) {
             for (Field field : clazz.getFields()) {
-                uniqueLine = uniqueLine.replace("\"", "");
                 final JsonName fieldAnnotation = field.getAnnotation(JsonName.class);
                 if (uniqueLine.contains(fieldAnnotation.jName())) {
                     List<String> strings2 = Arrays.asList(uniqueLine.split(":"));
@@ -22,9 +28,16 @@ public class JsonDeserialise {
                     }
                 }
             }
+            if (uniqueLine.equals("}")) {
+                resultList.add(clazz.cast(object));
+                object = clazz.getDeclaredConstructor().newInstance();
+            }
         }
-        return clazz.cast(object);
+
+//        clazz.cast(object);
+        return resultList;
     }
+
 
     public static boolean isNumeric(String testStr) {
         if (testStr == null) {
