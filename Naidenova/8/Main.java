@@ -7,9 +7,6 @@ public class Main {
     @EnclosingTag(JsonName = "Persons")
     static class Person {
 
-        @JsonName(fieldJsonName = "id")
-        public long id;
-
         @JsonName(fieldJsonName = "first name")
         public String name;
 
@@ -22,19 +19,12 @@ public class Main {
         public Person() {
         }
 
-        public Person(long id, String name, String nick, String level) {
-            this.id = id;
+        public Person(String name, String nick, String level) {
             this.name = name;
             this.nick = nick;
             this.level = level;
         }
 
-        public long getId() {
-            return id;
-        }
-        public void setId(long id) {
-            this.id = id;
-        }
         public String getName() {
             return name;
         }
@@ -56,7 +46,7 @@ public class Main {
 
         @Override
         public String toString() {
-            return "Person{id: " + id + "; Name: " + name + ", Nick Name: " + nick + "}";
+            return "Person{Name: " + name + " Nick Name: " + nick + "}";
         }
     }
         @EnclosingTag(JsonName = "Fruits")
@@ -65,19 +55,19 @@ public class Main {
             @JsonName(fieldJsonName = "fruit")
             public String name;
 
-            @JsonName(fieldJsonName = "weight")
-            public float weight;
+            @JsonName(fieldJsonName = "color")
+            public String color;
 
             @JsonIgnore
-            public String color;
+            public float weight;
 
             public Fruit() {
             }
 
-            public Fruit(String name, float weight, String color) {
+            public Fruit(String name, String color, float weight) {
                 this.name = name;
-                this.weight = weight;
                 this.color = color;
+                this.weight = weight;
             }
 
             public String getName() {
@@ -86,62 +76,46 @@ public class Main {
             public void setName(String name) {
                 this.name = name;
             }
-            public float getWeight() {
-                return weight;
-            }
-            public void setWeight(float weight) {
-                this.weight = weight;
-            }
             public String getColor() {
                 return color;
             }
             public void setColor(String color) {
                 this.color = color;
             }
+            public float getWeight() {
+                return weight;
+            }
+            public void setWeight(float weight) {
+                this.weight = weight;
+            }
 
             @Override
             public String toString() {
-                return "Fruit{Name: " + name + ", weight: " + weight + "}";
+                return "Fruit{Name: " + name + " color: " + color + "}";
             }
         }
 
-    public static void main(String[] args) throws IllegalAccessException {
+    public static void main(String[] args) throws IllegalAccessException, ClassNotFoundException, InstantiationException {
         List<Person> persons = new ArrayList<>();
-        persons.add(new Person(1, "Ivan", "Hawk", "1"));
-        persons.add(new Person(2, "Petr", "Dragon", "2"));
-        persons.add(new Person(3, "Anton", "Spy", "3"));
+        persons.add(new Person("Ivan", "Hawk", "1"));
 
-        System.out.println(serializeObject(persons));
+        SerializeToJson objectToJson = new SerializeToJson();
+        System.out.println(SerializeToJson.serializeObject(persons));
 
         List<Fruit> fruits = new ArrayList<>();
-        fruits.add(new Fruit("apple", 100, "red"));
-        fruits.add(new Fruit("orange", 200, "orange"));
+        fruits.add(new Fruit("apple", "red", 100));
 
-        System.out.println(serializeObject(fruits));
+        System.out.println(SerializeToJson.serializeObject(fruits));
 
-    }
+        DeserializeFromJson jsonToObject = new DeserializeFromJson();
 
-    static public String serializeObject(List<?> persons) throws IllegalAccessException {
-        StringBuilder stringBuilder = new StringBuilder();
-        final Object person = persons.get(0);
-        final EnclosingTag annotation = person.getClass().getAnnotation(EnclosingTag.class);
-        final String JsonName = annotation.JsonName();
-        stringBuilder.append(JsonName+":\n");
+        System.out.println(DeserializeFromJson.deserializeObject(SerializeToJson.serializeObject(persons), Person.class));
 
-        for (Object onePerson : persons) {
-            stringBuilder.append(onePerson.getClass().getSimpleName()+"\n{\n");
+        System.out.println(DeserializeFromJson.deserializeObject(SerializeToJson.serializeObject(fruits), Fruit.class));
 
-            for (Field field : onePerson.getClass().getDeclaredFields()){
-                final JsonName fieldAnnotation = field.getAnnotation(JsonName.class);
-
-                if (fieldAnnotation != null) {
-                    stringBuilder.append("\"" + fieldAnnotation.fieldJsonName() + "\":"
-                            + "\""+ field.get(onePerson).toString() +"\"" +"; \n");
-                }
-            }
-            stringBuilder.append("}\n\n");
-        }
-        return stringBuilder.toString();
     }
 
 }
+
+
+
