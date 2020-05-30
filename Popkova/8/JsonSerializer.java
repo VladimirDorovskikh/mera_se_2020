@@ -11,7 +11,7 @@ public class JsonSerializer {
     private static final String COLON = " : ";
     private static final String STRING = "String";
     private static final String DOUBLE = "double";
-    private static final char COMMA = ",";
+    private static final char COMMA = ',';
     private static final int DELETED_CHARS_COUNT = 2;
     private static final char LEFT_BRACKET = '}';
 
