@@ -3,7 +3,6 @@ import java.lang.reflect.Field;
 import java.util.*;
 
 public class JsonDeserializer {
-<<<<<<< HEAD
     private static final int BEGIN_CHARS_COUNT = 4;
     private static final String NEW_STRING = ",\n  ";
     private static final String COLON = " : ";
@@ -11,15 +10,6 @@ public class JsonDeserializer {
     private static final String COURSE_FIELD = "\"course\"";
     private static final String DOUBLE = "double";
     private static final String STRING = "String";
-=======
-    private int BEGIN_CHARS_COUNT = 4;
-    private String NEW_STRING = ",\n  ";
-    private String COLON = " : ";
-    private String AGE_FIELD = "\"age\"";
-    private String COURSE_FIELD = "\"course\"";
-    private String DOUBLE = "double";
-    private String STRING = "String";
->>>>>>> b3228cf087fda889a352e57b1892feb78b270b7f
 
     private List<String> fieldNames;
     private List<String> fieldValues;
@@ -124,8 +114,4 @@ public class JsonDeserializer {
             }
         }
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> b3228cf087fda889a352e57b1892feb78b270b7f
