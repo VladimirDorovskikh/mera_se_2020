@@ -4,16 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JsonSerializer {
-    private static final String RIGHT_BRACKET = "{";
-    private static final String NEW_STRING = "\n";
+    private static final char RIGHT_BRACKET = '{';
+    private static final char NEW_STRING = '\n';
     private static final String SPACE = "  ";
-    private static final String QUOTATION = "\"";
+    private static final char QUOTATION = '\"';
     private static final String COLON = " : ";
     private static final String STRING = "String";
     private static final String DOUBLE = "double";
-    private static final String COMMA = ",";
+    private static final char COMMA = ",";
     private static final int DELETED_CHARS_COUNT = 2;
-    private static final String LEFT_BRACKET = "}";
+    private static final char LEFT_BRACKET = '}';
 
     private List<Annotation> annotationList;
     private List<Field> jsonNameFieldList;
