@@ -8,18 +8,28 @@ public class Circle extends Figure {
 
     public Circle(int x, int y, int radius) {
         super(x, y);
+        if (radius < 0.0){
+            throw new NegativeRadius("The radius in less that zero\n");
+        }
         this.radius=radius;
+    }
+    public Circle(int x, int y){
+        super(x, y);
+        radius=size.nextInt(MAX_RADIUS);
     }
 
     public Circle() {
-        super(x, y);
-        Random size = new Random();
         radius=size.nextInt(MAX_RADIUS);
     }
 
     @Override
     public double square() {
         return (double)(3.1415*radius*radius);
+    }
+
+    @Override
+    public String toString(){
+        return String.format("The %s with square %f", getClass().getSimpleName(), square());
     }
 
 

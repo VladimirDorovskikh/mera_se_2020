@@ -5,17 +5,26 @@ import java.util.Random;
 public class Rectangle extends Figure {
     static final int MAX_LENGHT=20;
     static int height, wigth;
+    //Random size = new Random();
 
 
     public Rectangle(int x, int y, int height, int wigth) {
         super(x,y);
+        if (height < 0 || wigth < 0) {
+            throw new NegativeRectParameters(String.format("Incorrect parameter (less than zero)\n\theight: %f\n\twigth: %f", (float)height, (float)wigth));
+        }
         this.height = height;
         this.wigth = wigth;
     }
 
-    public Rectangle() {
+    public Rectangle(int x, int y) {
         super(x,y);
-        Random size = new Random();
+        height = size.nextInt(MAX_LENGHT);
+        wigth = size.nextInt(MAX_LENGHT);
+    }
+
+    public Rectangle() {
+        //super(x,y);
         height = size.nextInt(MAX_LENGHT);
         wigth = size.nextInt(MAX_LENGHT);
     }

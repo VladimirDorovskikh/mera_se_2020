@@ -1,7 +1,10 @@
 package com.mera.lection5.ex1;
 
+import java.util.Random;
+
 public abstract class Figure {
     protected int x, y;
+    protected Random size = new Random();
 
 
     public Figure(int x, int y) {
