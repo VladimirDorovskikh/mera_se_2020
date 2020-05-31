@@ -5,7 +5,8 @@ import java.util.Random;
 import java.util.Set;
 
 public class Zoo {
-    private final String possibleNames[] = {"Jack", "Bonny", "Lord", "Jessy", "Allma", "Beem", "Alex", "Gerda"};
+    private final String possibleNames[] = {"Jack", "Bonny", "Lord", "Jessy", "Allma", "Beem", "Alex", "Gerda", "Max",
+            "Ray", "Casper"};
     private Set<WildAnimal> wildAnimalSet = new HashSet<>();
     private Set<PetAnimal> petAnimalSet = new HashSet<>();
 
@@ -20,10 +21,10 @@ public class Zoo {
         for (int i = 0; i < randNumber; i++) {
             switch (new Random().nextInt(2)) {
                 case 0:
-                    animals.add(new Cat(possibleNames[new Random().nextInt(possibleNames.length)]));
+                    animals.add(new Cat(possibleNames[i]));
                     break;
                 default:
-                    animals.add(new Dog(possibleNames[new Random().nextInt(possibleNames.length)]));
+                    animals.add(new Dog(possibleNames[i]));
                     break;
             }
         }
@@ -35,17 +36,17 @@ public class Zoo {
         for (int i = 0; i < randNumber; i++) {
             switch (new Random().nextInt(2)) {
                 case 0:
-                    animals.add(new Fox(possibleNames[new Random().nextInt(possibleNames.length)]));
+                    animals.add(new Fox(possibleNames[i]));
                     break;
                 default:
-                    animals.add(new Wolf(possibleNames[new Random().nextInt(possibleNames.length)]));
+                    animals.add(new Wolf(possibleNames[i]));
                     break;
             }
         }
     }
 
-    private <T> void printAnimalsFromCollection(Set<T> animals) {
-        for (T animal : animals) {
+    private void printAnimalsFromCollection(Set<? extends Animal> animals) {
+        for (Animal animal : animals) {
             System.out.println(animal.toString());
         }
     }
