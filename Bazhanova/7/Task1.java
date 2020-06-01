@@ -26,6 +26,30 @@ class WildAnimal extends Animal {
     public String getFavoriteMeal() {
         return favoriteMeal;
     }
+
+
+    @Override
+    public boolean equals(Object o) {
+
+        if (o == this) return true;
+        if (!(o instanceof WildAnimal)) {
+            return false;
+        }
+
+        WildAnimal animal = (WildAnimal) o;
+
+        return animal.name.equals(name) &&
+            animal.favoriteMeal.equals(favoriteMeal);
+    }
+
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+        result = 31 * result + name.hashCode();
+        result = 31 * result + favoriteMeal.hashCode();
+        return result;
+    }
 }
 
 class PetAnimal extends Animal {
@@ -34,11 +58,34 @@ class PetAnimal extends Animal {
     public String getFavoriteMeal() {
         return favoriteMeal;
     }
+
+    @Override
+    public boolean equals(Object o) {
+
+        if (o == this) return true;
+        if (!(o instanceof PetAnimal)) {
+            return false;
+        }
+
+        PetAnimal animal = (PetAnimal) o;
+
+        return animal.name.equals(name) &&
+            animal.favoriteMeal.equals(favoriteMeal);
+    }
+
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+        result = 31 * result + name.hashCode();
+        result = 31 * result + favoriteMeal.hashCode();
+        return result;
+    }
 }
 
 class Cat extends PetAnimal {
 
-    Cat(String name, String favoriteMeal) {
+    public Cat(String name, String favoriteMeal) {
         this.name = name;
         this.favoriteMeal = favoriteMeal;
     }
@@ -51,7 +98,7 @@ class Cat extends PetAnimal {
 
 class Dog extends PetAnimal {
 
-    Dog(String name, String favoriteMeal) {
+    public Dog(String name, String favoriteMeal) {
         this.name = name;
         this.favoriteMeal = favoriteMeal;
     }
@@ -65,7 +112,7 @@ class Dog extends PetAnimal {
 
 class Wolf extends WildAnimal {
 
-    Wolf(String name, String favoriteMeal) {
+    public Wolf(String name, String favoriteMeal) {
         this.name = name;
         this.favoriteMeal = favoriteMeal;
     }
@@ -78,11 +125,11 @@ class Wolf extends WildAnimal {
 
 class Fox extends WildAnimal {
 
-    Fox(String name, String favoriteMeal) {
+    public Fox(String name, String favoriteMeal) {
         this.name = name;
         this.favoriteMeal = favoriteMeal;
     }
-    
+
     @Override
     public String toString() {
         return ("Лиса: " + name + ", любимая еда - " + this.favoriteMeal);
@@ -126,7 +173,7 @@ class Zoo {
     private Set < WildAnimal > wildAnimalSet;
     private Set < PetAnimal > petAnimalSet;
 
-    
+
 
     public Zoo() {
         wildAnimalSet = new HashSet < > ();
@@ -162,7 +209,12 @@ class Zoo {
     }
 
     public void fillCollectionWithPetAnimals(Set < PetAnimal > petAnimalSet) {
-         
+
+        petAnimalSet.add(new Cat("Васька", "мясо"));
+        petAnimalSet.add(new Cat("Васька", "мясо"));
+        petAnimalSet.add(new Cat("Васька", "мясо"));
+
+
         Random rnd = new Random(System.currentTimeMillis());
         int numPetAnimals = MIN_PET + rnd.nextInt(MAX_PET - MIN_PET + 1);
 
