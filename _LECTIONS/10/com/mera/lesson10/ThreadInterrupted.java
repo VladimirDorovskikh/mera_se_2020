@@ -1,5 +1,6 @@
 package com.mera.lesson10;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -7,6 +8,22 @@ public class ThreadInterrupted {
 
 
 
+
+    public static class Runner {
+        void runTasks(Collection<String> tasks) throws InterruptedException {
+
+            for (String task : tasks) {
+                System.out.println("Начинаю обрабатывать задачу " + task);
+                final long start = System.currentTimeMillis();
+                while ( System.currentTimeMillis() - start <  100_000) {
+                    if (Thread.currentThread().isInterrupted()) {
+                        Thread.interrupted();
+                        throw new InterruptedException();
+                    }
+                }
+            }
+        }
+    }
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -18,16 +35,12 @@ public class ThreadInterrupted {
 
 
         Runnable r = () -> {
-
-            for (String task : tasks) {
-
-                System.out.println("Начинаю обрабатывать задачу " + task);
-                try {
-                    Thread.sleep(100_000);
-                } catch (InterruptedException e) {
-                    System.out.println("Задача остановлена, принимаюсь за следующую задачу");
-                }
+            try {
+                new Runner().runTasks(tasks);
+            } catch (InterruptedException e) {
+                System.out.println("Поток прервали");
             }
+
 
         };
 

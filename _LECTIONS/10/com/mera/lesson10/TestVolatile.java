@@ -18,7 +18,9 @@ public class TestVolatile extends Thread{
         t.start();
         Thread.sleep(1000);
         System.out.println("after sleeping in main");
+
         t.keepRunning = false;
+
         t.join();
         System.out.println("keepRunning set to " + t.keepRunning);
     }
