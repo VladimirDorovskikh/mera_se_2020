@@ -17,6 +17,11 @@ public abstract class Animal
     }
     public abstract String getFavoriteMeal();
 
+    public String getName()
+    {
+        return name;
+    }
+
     @Override
     public boolean equals(Object o)
     {

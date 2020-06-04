@@ -70,11 +70,14 @@ public class Zoo
         }
     }
 
-    private void printAnimalsFromCollection(Set<?> animalSet)
+    private void printAnimalsFromCollection(Set<? extends Animal> animalSet)
     {
-        for (Object o : animalSet)
+        for (Animal o : animalSet)
         {
-            System.out.println(o.toString());
+            System.out.println(o.getClass().getSimpleName() +
+                    " " + o.getName() +
+                    " likes to eat " +
+                    o.getFavoriteMeal());
         }
     }
 
