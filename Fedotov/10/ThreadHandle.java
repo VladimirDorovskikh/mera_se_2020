@@ -6,13 +6,13 @@ import java.net.URL;
 
 public class ThreadHandle {
 
-    public void getHtml(HttpData httpData) throws IOException {
+    public void getHtml(HttpDataRunnable httpData) throws IOException {
 
         try (InputStream inputStream = new URL(httpData.getName()).openStream()){
             long sizeInBytes = 0;
             long start = getCurrentTimeMillis();
             StringBuilder stringBuilder = new StringBuilder();
-            byte[] buffer = new byte[10_000_000];
+            byte[] buffer = new byte[10_000];
             int read;
             do {
                 read = inputStream.read(buffer);
