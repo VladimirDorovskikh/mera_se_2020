@@ -9,11 +9,15 @@ public class Main {
     private static final String TOTAL_DOWNLOAD_TIME = "Total download time (nanoseconds): ";
     private static final String TOTAL_INFORMATION_SIZE = "Total information size (chars): ";
     private static final CopyOnWriteArrayList<String> linkList = new CopyOnWriteArrayList<>();
+    private static final Downloader downloader = new Downloader();
 
     public static void main(String[] args) {
         addElementsToCollection();
+
         downloadInformationInCurrentThread();
+        downloader.clearAllValues();
         System.out.println();
+
         downloadInformationInParallelThread();
     }
 
@@ -24,23 +28,26 @@ public class Main {
     }
 
     public static void downloadInformationInCurrentThread() {
-        final Downloader downloader = new Downloader();
-
         for(String link : linkList) {
             downloader.downloadInformation(link);
         }
 
         System.out.println(TOTAL_DOWNLOAD_TIME + downloader.getDownloadTime());
-        System.out.println(TOTAL_INFORMATION_SIZE + downloader.getTotalInformationSize());
+        System.out.println(TOTAL_INFORMATION_SIZE + downloader.getInformationSize());
     }
 
     public static void downloadInformationInParallelThread() {
-        for(int i = 0; i < linkList.size(); i++) {
-            final DownloadThread thread = new DownloadThread(linkList.get(i));
-            thread.run();
+        long totalDownloadTime = 0;
+        int totalInformationSize = 0;
 
-            System.out.println(TOTAL_DOWNLOAD_TIME + thread.getDownloadTime());
-            System.out.println(TOTAL_INFORMATION_SIZE + thread.getTotalInformationSize());
+        for(int i = 0; i < linkList.size(); i++) {
+            final DownloadThread downloadThread = new DownloadThread(linkList.get(i));
+            downloadThread.run();
+            totalDownloadTime += downloadThread.getDownloadTime();
+            totalInformationSize =+ downloadThread.getInformationSize();
         }
+
+        System.out.println(TOTAL_DOWNLOAD_TIME + totalDownloadTime);
+        System.out.println(TOTAL_INFORMATION_SIZE + totalInformationSize);
     }
 }

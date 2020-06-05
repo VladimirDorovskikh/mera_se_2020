@@ -8,7 +8,7 @@ import java.net.URL;
 public class Downloader {
     private static final String INTERRUPTED_OR_FAILED_IO_OPERATION = "Some I/O operation has been interrupted or failed.";
 
-    private long downloadTime;
+    private long totalDownloadTime;
     private int totalInformationSize;
 
     public void downloadInformation(String link) {
@@ -16,7 +16,8 @@ public class Downloader {
 
         try {
             URL url = new URL(link);
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(url.openConnection().getInputStream()));
+            InputStreamReader inputStreamReader = new InputStreamReader(url.openConnection().getInputStream());
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
             String content;
 
             while ((content = bufferedReader.readLine()) != null) {
@@ -24,19 +25,25 @@ public class Downloader {
             }
 
             bufferedReader.close();
+            inputStreamReader.close();
         }
         catch (IOException ex) {
             System.out.println(INTERRUPTED_OR_FAILED_IO_OPERATION);
         }
 
-        downloadTime = System.nanoTime() - beginTime;
+        totalDownloadTime += System.nanoTime() - beginTime;
+    }
+
+    public void clearAllValues() {
+        totalDownloadTime = 0;
+        totalInformationSize = 0;
     }
 
     public long getDownloadTime() {
-        return downloadTime;
+        return totalDownloadTime;
     }
 
-    public int getTotalInformationSize() {
+    public int getInformationSize() {
         return totalInformationSize;
     }
 }
