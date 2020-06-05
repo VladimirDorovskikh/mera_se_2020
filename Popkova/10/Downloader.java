@@ -34,11 +34,6 @@ public class Downloader {
         totalDownloadTime += System.nanoTime() - beginTime;
     }
 
-    public void clearAllValues() {
-        totalDownloadTime = 0;
-        totalInformationSize = 0;
-    }
-
     public long getDownloadTime() {
         return totalDownloadTime;
     }

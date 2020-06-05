@@ -15,7 +15,6 @@ public class Main {
         addElementsToCollection();
 
         downloadInformationInCurrentThread();
-        downloader.clearAllValues();
         System.out.println();
 
         downloadInformationInParallelThread();

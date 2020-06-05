@@ -1,6 +1,7 @@
 package com.katepopkova;
 
 public class DownloadThread extends Thread {
+
     private static final Downloader downloader = new Downloader();
 
     private String link;
