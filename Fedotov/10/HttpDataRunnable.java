@@ -41,7 +41,7 @@ public class HttpDataRunnable implements Runnable{
             long sizeInBytes = 0;
             long start = getCurrentTimeMillis();
             StringBuffer stringBuffer = new StringBuffer();
-            byte[] buffer = new byte[10_000_000];
+            byte[] buffer = new byte[10_000];
             int read;
             do {
                 read = inputStream.read(buffer);
