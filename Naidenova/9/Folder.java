@@ -98,8 +98,10 @@ public class Folder {
             if (fileAndSize.getValue() == minSize) {
                 System.out.println("File with min size: \n" + fileAndSize.getKey() + " : " + fileAndSize.getValue() + " bytes");
 
-                try {FileReader fread = new FileReader(fileAndSize.getKey());
-                    BufferedReader fin = new BufferedReader(fread);
+                try {FileReader fread = null;
+                    fread = new FileReader(fileAndSize.getKey());
+                    BufferedReader fin = null;
+                    fin = new BufferedReader(fread);
 
                     String line;
                     while ((line = fin.readLine()) != null) {
@@ -129,7 +131,12 @@ public class Folder {
                 FileReader fread = new FileReader(fileAndSize.getKey());
                 BufferedReader fin = new BufferedReader(new FileReader(fileAndSize.getKey()));
 
-                try {String line;
+                try {FileReader fread = null;
+                    fread = new FileReader(fileAndSize.getKey());
+                    BufferedReader fin = null;
+                    fin = new BufferedReader(fread);
+
+                    String line;
                     int count = 0;
                     while ((line = fin.readLine()) != null) {
                         System.out.println(line);
