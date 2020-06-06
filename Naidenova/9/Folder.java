@@ -173,6 +173,7 @@ public class Folder {
                 System.out.println("Not deleted  " + pathToDelete.toString());
             }
         }
+        //Нуждаюсь в подсказке, почему мои файлы так и не удаляются)
     }
 }
 
