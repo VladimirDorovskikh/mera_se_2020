@@ -79,7 +79,7 @@ public class Task1 {
         final long endTime3 = System.currentTimeMillis();
         service.shutdown();
 
-        System.out.println("Concurrent Test V.1");
+        System.out.println("Concurrent url download - V.2 (using of ExecutorService)");
         UrlUtils.printUrlDownloadTotalResult(urlsAndSizesConcurrentExe, startTime3, endTime3);
 
     }
