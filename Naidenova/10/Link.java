@@ -8,8 +8,7 @@ public class Link {
 
     public static void oneLink(String url) throws IOException, InterruptedException {
 
-        Map<String, String> URLsContent = new ConcurrentHashMap<>();
-        long lStartTime = System.currentTimeMillis();
+        Map<String, String> URLsContent = new ConcurrentHashMap<>();        
         try {
             URL site = new URL(url);
             InputStream inputStream = (java.io.InputStream) site.openStream();
@@ -23,8 +22,6 @@ public class Link {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        long lEndTime = System.currentTimeMillis();
-        long output = lEndTime - lStartTime;
     }
 
     public static int getSize() {
