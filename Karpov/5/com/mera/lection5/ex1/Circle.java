@@ -9,7 +9,7 @@ public class Circle extends Figure {
     public Circle(int x, int y, int radius) {
         super(x, y);
         if (radius < 0.0){
-            throw new NegativeRadius("The radius in less that zero\n");
+            throw new NegativeRadius("The radius in less than zero\n");
         }
         this.radius=radius;
     }
