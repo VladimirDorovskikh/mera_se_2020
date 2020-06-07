@@ -56,7 +56,7 @@ public class Main {
 
     private static List<String> createURLsCollection() {
         List<String> URLs = new ArrayList<>();
-        URLs.add("https://stihi.ru/editor/2020/05/06/535");
+        URLs.add("https://rustih.ru/marina-cvetaeva-iyul-aprelyu/");
         URLs.add("https://rustih.ru/sergej-esenin-cheremuxa-dushistaya/");
         URLs.add("https://rustih.ru/aleksandr-pushkin-volshebnyj-kraj/");
         return URLs;
