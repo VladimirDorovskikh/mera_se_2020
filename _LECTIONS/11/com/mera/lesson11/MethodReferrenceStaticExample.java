@@ -4,7 +4,7 @@ import java.util.Set;
 
 public class MethodReferrenceStaticExample {
 
-    class Person {
+    /*class Person {
         Set<String> professions;
         public void addProfessions(String profession, Integer mark) {
             professions.add(profession);
@@ -14,7 +14,7 @@ public class MethodReferrenceStaticExample {
     public interface PersonFiller {
          void readPerson(Person person, String profession, Integer mark);
     }
-
+*/
     public interface NumberOperation {
         int invoke(int one, int another);
     }
@@ -29,7 +29,7 @@ public class MethodReferrenceStaticExample {
             }
         };
 
-        NumberOperation plusLambda = (one, two) -> one + two;
+        NumberOperation plusLambda = (one, two) -> summ(one, two);
 
         NumberOperation plus = MethodReferrenceStaticExample::summ;
         NumberOperation minus = MethodReferrenceStaticExample::diff;
