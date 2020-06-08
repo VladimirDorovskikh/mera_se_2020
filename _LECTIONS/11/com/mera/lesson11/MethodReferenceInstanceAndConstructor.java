@@ -60,6 +60,7 @@ public class MethodReferenceInstanceAndConstructor {
 
         Callable<Person> r = Person::new;
         Person p = r.call();
+        System.out.println(p);
 
     }
 

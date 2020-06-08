@@ -1,0 +1,3 @@
+Задание 12. Фреймворки
+1. Создайте новый Maven проект из архетипа maven-archetype-quickstart
+http://maven.apache.org/archetypes/maven-archetype-quickstart/
