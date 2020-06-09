@@ -30,47 +30,45 @@ public class WriteJson
 
         for (Field f: o.getClass().getDeclaredFields())
         {
-            for(Annotation a : f.getAnnotations())
+            JsonField a = f.getAnnotation(JsonField.class);
+            if (a != null)
             {
-                if (a instanceof JsonField)
+                if( first )
                 {
-                    if( first )
+                    result = "{\n";
+                    first = false;
+                    found = true;
+                }
+                else
+                {
+                    result += ";\n";
+                }
+                if (f.getType().equals(double.class))
+                {
+                    result += "\t\"";
+                    result += a.value();
+                    result += "\":";
+                    try
                     {
-                        result = "{\n";
-                        first = false;
-                        found = true;
-                    }
-                    else
+                        result += String.format("%.1f", f.get(o));
+                    } catch (IllegalAccessException e)
                     {
-                        result += ";\n";
+                        e.printStackTrace();
                     }
-                    if (f.getType().equals(double.class))
+                }
+                if (f.getType().equals(java.lang.String.class))
+                {
+                    result += "\t\"";
+                    result += a.value();
+                    result += "\":\"";
+                    try
                     {
-                        result += "\t\"";
-                        result += ((JsonField) a).value();
-                        result += "\":";
-                        try
-                        {
-                            result += String.format("%.1f", f.get(o));
-                        } catch (IllegalAccessException e)
-                        {
-                            e.printStackTrace();
-                        }
-                    }
-                    if (f.getType().equals(java.lang.String.class))
+                        result += f.get(o);
+                    } catch (IllegalAccessException e)
                     {
-                        result += "\t\"";
-                        result += ((JsonField) a).value();
-                        result += "\":\"";
-                        try
-                        {
-                            result += f.get(o);
-                        } catch (IllegalAccessException e)
-                        {
-                            e.printStackTrace();
-                        }
-                        result += "\"";
+                        e.printStackTrace();
                     }
+                    result += "\"";
                 }
             }
         }

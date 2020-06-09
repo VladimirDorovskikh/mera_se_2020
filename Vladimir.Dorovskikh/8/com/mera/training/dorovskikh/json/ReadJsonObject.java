@@ -29,13 +29,7 @@ public class ReadJsonObject
         try
         {
             result = ctor.newInstance();
-        } catch (InstantiationException e)
-        {
-            e.printStackTrace();
-        } catch (IllegalAccessException e)
-        {
-            e.printStackTrace();
-        } catch (InvocationTargetException e)
+        } catch (InstantiationException | IllegalAccessException | InvocationTargetException e)
         {
             e.printStackTrace();
         }
@@ -51,24 +45,22 @@ public class ReadJsonObject
 
         for (Field f: className.getDeclaredFields())
         {
-            for(Annotation a : f.getAnnotations())
+            JsonField a = f.getAnnotation(JsonField.class);
+            if (a != null)
             {
-                if (a instanceof JsonField)
+                try
                 {
-                    try
+                    if(f.getType().equals(double.class))
                     {
-                        if(f.getType().equals(double.class))
-                        {
-                            f.set(result, Double.valueOf( (String) jsonData.get(((JsonField) a).value())));
-                        }
-                        else
-                        {
-                            f.set(result, jsonData.get(((JsonField) a).value()));
-                        }
-                    } catch (IllegalAccessException e)
-                    {
-                        e.printStackTrace();
+                        f.set(result, Double.valueOf( (String) jsonData.get(a.value())));
                     }
+                    else
+                    {
+                        f.set(result, jsonData.get(a.value()));
+                    }
+                } catch (IllegalAccessException e)
+                {
+                    e.printStackTrace();
                 }
             }
         }
