@@ -36,10 +36,6 @@ public class Person {
         return pwdArray[new Random().nextInt(pwdArray.length)];
     }
 
-    public Person() {
-        this(null, 50.0, null);
-    }
-
     public Person(String name, double age, String password) {
         this.name = name;
         this.age = age;

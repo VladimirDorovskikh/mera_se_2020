@@ -2,6 +2,7 @@ import com.mera.training.dorovskikh.json.NotPerson;
 import com.mera.training.dorovskikh.json.Person;
 import com.mera.training.dorovskikh.json.WriteJson;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,8 +39,7 @@ import static com.mera.training.dorovskikh.json.WriteJson.toJson;
  * например ,deserialize(<пример выше>, Person.class) вернет экземпляр Person{name="Vasya",age=12,password=null}
  */
 public class Task8 {
-    public static void main(String ... args)
-    {
+    public static void main(String ... args) throws IllegalAccessException, InvocationTargetException, InstantiationException {
         List<Person> personal = new ArrayList<>();
         personal.add(new Person(Person.generateName(), Person.generateAge(), Person.generatePassword()));
         personal.add(new Person(Person.generateName(), Person.generateAge(), Person.generatePassword()));
@@ -53,7 +53,7 @@ public class Task8 {
         toJson(new NotPerson());
 
         Person p = (Person) fromJson(toJson( new Person(Person.generateName(), Person.generateAge(), Person.generatePassword())), Person.class);
+        NotPerson p2 = (NotPerson) fromJson(toJson( new Person(Person.generateName(), Person.generateAge(), Person.generatePassword())), NotPerson.class);
         System.out.println(p.toString());
-
     }
 }
