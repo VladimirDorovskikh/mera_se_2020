@@ -1,9 +1,6 @@
 package com.mera.training.dorovskikh.json;
 
-import java.lang.annotation.Annotation;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.*;
 import java.util.HashMap;
 
 /**
@@ -12,56 +9,62 @@ import java.util.HashMap;
  */
 public class ReadJsonObject
 {
-    static public Object fromJson(String objectData, Class className)
-    {
-        Object result = null;
-        Constructor[] ctors = className.getConstructors();
-        Constructor ctor = null;
-        for (int i = 0; i < ctors.length; i++)
-        {
-            ctor = ctors[i];
-            if(ctor.getParameterTypes().length == 0)
-            {
-                break;
-            }
-        }
-
-        try
-        {
+    static public Object fromJson(String objectData, Class className) throws IllegalAccessException, InvocationTargetException, InstantiationException {
+        Object result;
+        Constructor ctor;
+        try {
+            ctor = className.getConstructor( null);
             result = ctor.newInstance();
-        } catch (InstantiationException | IllegalAccessException | InvocationTargetException e)
-        {
-            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            Constructor[] ctors = className.getConstructors();
+            ctor = ctors[0];
+            Type[] typeArray = ctor.getParameterTypes();
+            Object[] parameterArray = new Object[typeArray.length];
+            for (int i = 0; i < typeArray.length; ++i) {
+                if (typeArray[i].equals(double.class))
+                {
+                    parameterArray[i] = 0.0;
+                }
+            }
+            result = ctor.newInstance(parameterArray);
         }
 
         String[] dataPairs = objectData.replaceAll("[ {}\t\n\"]", "").split(";");
-        HashMap jsonData = new HashMap();
+        HashMap jsonData = new HashMap<String,String>();
 
-        for (int i = 0; i < dataPairs.length; i++)
-        {
-            String[] pair = dataPairs[i].split(":");
+        for (String dataPair : dataPairs) {
+            String[] pair = dataPair.split(":");
             jsonData.put(pair[0], pair[1]);
         }
 
         for (Field f: className.getDeclaredFields())
         {
             JsonField a = f.getAnnotation(JsonField.class);
-            if (a != null)
+            if (f.getType().equals(double.class))
             {
-                try
+                if (a != null)
                 {
-                    if(f.getType().equals(double.class))
-                    {
-                        f.set(result, Double.valueOf( (String) jsonData.get(a.value())));
-                    }
-                    else
-                    {
-                        f.set(result, jsonData.get(a.value()));
-                    }
-                } catch (IllegalAccessException e)
-                {
-                    e.printStackTrace();
+                    f.set(result, Double.valueOf((String) jsonData.get(a.value())));
                 }
+                else
+                {
+                    f.set(result, 0.0);
+                }
+            }
+            else if (f.getType().equals(String.class))
+            {
+                if (a != null)
+                {
+                    f.set(result, jsonData.get(a.value()));
+                }
+                else
+                {
+                    f.set(result, null);
+                }
+            }
+            else
+            {
+                throw new RuntimeException("unexpected parameter type");
             }
         }
 
