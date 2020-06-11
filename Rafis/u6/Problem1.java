@@ -68,7 +68,7 @@ public class Problem1 {
             boolean isExist = false;
 
             for (int i = 0; i < size; i++) {
-                if (e == (E)arr[i]) {
+                if (e.equals(arr[i])) {
                     isExist = true;
                     for (int j = i; j < size -1; j++) {
                         arr[j] = arr[j+1];
@@ -103,10 +103,10 @@ public class Problem1 {
         }
     }
 
-    class NonexistentBike extends Exception {
+    class NonexistentBikeException extends Exception {
         private int speed;
 
-        public NonexistentBike(int speed) {
+        public NonexistentBikeException(int speed) {
             this.speed = speed;
         }
 
@@ -121,12 +121,12 @@ public class Problem1 {
         final static int MIN_SPEED = 5;
         final static int MAX_SPEED = 50;
 
-        public Bicycle(String modelName, int maxSpeed) throws NonexistentBike {
+        public Bicycle(String modelName, int maxSpeed) throws NonexistentBikeException {
             if ((maxSpeed >= MIN_SPEED) && (maxSpeed <= MAX_SPEED)) {
                 this.modelName = modelName;
                 this.maxSpeed = maxSpeed;
             } else {
-                throw new NonexistentBike(maxSpeed);
+                throw new NonexistentBikeException(maxSpeed);
             }
         }
 
@@ -173,7 +173,7 @@ public class Problem1 {
                 System.out.println((i+1) + ": " + bicycles.get(i));
             } catch (MyArrayStoreException e) {
                 System.out.println(">> Out of max length. Current: " + e.getLength());
-            } catch (NonexistentBike e) {
+            } catch (NonexistentBikeException e) {
                 System.out.println("Unsupported bike with speed: " + e.getSpeed());
             }
         }

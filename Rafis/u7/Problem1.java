@@ -105,11 +105,11 @@ public class Problem1 {
         private Set<PetAnimal> petAnimals = new HashSet<>();
 
         Zoo() {
-            fillCollectionWithPetAnimals();
-            fillCollectionWithWildAnimals();
+            fillCollectionWithPetAnimals(petAnimals);
+            fillCollectionWithWildAnimals(wildAnimals);
         }
 
-        private void fillCollectionWithPetAnimals() {
+        private void fillCollectionWithPetAnimals(Set<PetAnimal> petAnimals) {
             final int MIN_NUM = 1;
             final int MAX_NUM = 5;
 
@@ -124,7 +124,7 @@ public class Problem1 {
             }
         }
 
-        private void fillCollectionWithWildAnimals() {
+        private void fillCollectionWithWildAnimals(Set<WildAnimal> wildAnimals) {
             final int MIN_NUM = 3;
             final int MAX_NUM = 10;
 
@@ -139,7 +139,7 @@ public class Problem1 {
             }
         }
 
-        private void printAnimalsFromCollection(Set<Animal> animals) {
+        private void printAnimalsFromCollection(Set<? extends Animal> animals) {
             for (Animal animal : animals) {
                 System.out.println(animal.toString());
             }
@@ -147,9 +147,9 @@ public class Problem1 {
 
         public void printAllAnimals() {
             System.out.println("\nPet animals:\n");
-            printAnimalsFromCollection(new HashSet<>(wildAnimals));
+            printAnimalsFromCollection(wildAnimals);
             System.out.println("\nWild animals:\n");
-            printAnimalsFromCollection(new HashSet<>(petAnimals));
+            printAnimalsFromCollection(petAnimals);
         }
     }
 
